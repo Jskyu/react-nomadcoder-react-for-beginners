@@ -33,22 +33,20 @@
     /*
     const Button = () => (<button onClick={() => console.log("click!")}>Click me</button>);
     */
-    let counter = 0;
-    const increaseCount = () => {
-      counter += 1;
-      render();
+    const App = () => {
+      const [counter, setCounter] = React.useState(0);
+      const increaseCount = () => {
+        // setCounter(counter + 1);
+        setCounter((current) => current + 1);
+      }
+      return (
+        <div>
+          <h3>Total clicks: {counter}</h3>
+          <button onClick={increaseCount}>Click me</button>
+        </div>
+      );
     }
-    const render = () => {
-      ReactDOM.render(<Container />, root);
-    }
-    const Container = () => (
-      <div>
-        <h3>Total clicks: {counter}</h3>
-        <button onClick={increaseCount}>Click me</button>
-      </div>
-    );
-
-    render();
+    ReactDOM.render(<App />, root);
   </script>
 </html>
 
